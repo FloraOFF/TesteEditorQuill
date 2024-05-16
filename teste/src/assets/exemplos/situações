@@ -1,0 +1,25 @@
+[{
+  "editor": "editorInstance", 
+  "html": "html", 
+  "text": "text", 
+  "content": "content",
+  "delta": "delta", 
+  "oldDelta": "oldDelta",
+  "source": "source" 
+},
+{
+  "editor": "editorInstance", 
+  "range": "range", 
+  "oldRange": "oldRange", 
+  "source": "source" 
+},
+{
+  "editor": "editorInstance", 
+  "event": "text-change", 
+  "html": "html", 
+  "text": "text", 
+  "content": "content",
+  "delta": "delta", 
+  "oldDelta": "oldDelta", 
+  "source": "source"
+}]

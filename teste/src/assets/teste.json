@@ -1,0 +1,22 @@
+{
+    "ops": [
+      {
+        "insert": "hello"
+      },
+      {
+        "attributes": {
+          "list": "ordered"
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "world"
+      },
+      {
+        "attributes": {
+          "list": "ordered"
+        },
+        "insert": "\n"
+      }
+    ]
+  }

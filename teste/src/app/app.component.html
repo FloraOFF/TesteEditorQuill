@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <h3 style="text-align: center;">Quill Js Editor</h3>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-nd-12">
+      <quill-editor [styles]="{height: '200px'}" [modules]="modules" 
+      (onEditorChanged)="changedEditor($event)" #content="ngModel" 
+      [(ngModel)]="data.content" placeholder="Por favor insira seu post aqui">
+      </quill-editor>
+    </div>
+  </div>
+  <div class="row">
+    <h3 style="text-align: left;">Output</h3>
+    <div class="col-md-8 bg-light">
+      <p [innerHTML]="data.content"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="saveContent()">Salvar</button>
+    </div>
+  </div>
+</div>
+
