@@ -8,23 +8,28 @@ import { IService } from './i-service';
 @Injectable({
   providedIn: 'root'
 })
-export class ComponentService {
+export class ComponentService implements IService<data>{
 
   constructor(private http: HttpClient) {}
+  
   apiUrl: string = environment.API_URL;
+  
+  getById(id: number): Observable<data> {
+    throw new Error('Method not implemented.');
+  }
 
   get(termoBusca?: string | undefined): Observable<data[]> {
     let url = this.apiUrl;
     return this.http.get<data[]>(url);
   }
 
-  save(objeto: data): Observable<data[]> {
+  save(objeto: data): Observable<data> {
     let url = `${this.apiUrl}`;
     if (objeto.id) {
       url = `${this.apiUrl}/${objeto.id}`;
-      return this.http.put<data[]>(url, objeto);
+      return this.http.put<data>(url, objeto);
     } else {
-      return this.http.post<data[]>(url, objeto);
+      return this.http.post<data>(url, objeto);
     }
   }
 
