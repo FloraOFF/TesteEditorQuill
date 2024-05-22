@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   
   ngOnInit(): void {
     // console.log (this.get());
-    this.get();
+    // this.get();
   }
 
   registro: data[] = []; /*Mudar para objeto porque sempre é uma publicação*/
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit{
 
   data = {
     id: 0,
-    content: ''
+    content: ''   //Tentar ver melhor a questão de um objeto somente
   };
 
   name = 'Angular';
