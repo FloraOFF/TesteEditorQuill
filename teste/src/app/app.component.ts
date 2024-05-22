@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { ComponentService } from './service/component.service';
-import { content } from './model/content';
+import { data } from './model/data';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +13,26 @@ export class AppComponent implements OnInit{
   constructor (private servico: ComponentService) {}
   
   ngOnInit(): void {
-    console.log (this.get());
+    // console.log (this.get());
+    this.get();
   }
 
-  registro: content[] = [];
+  registro: data[] = [];
 
   title = 'teste';
   @ViewChild('editor') editor: any;
 
+  escapeHtml(text: string): string {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   data = {
+    id: 0,
     content: ''
   };
 
@@ -36,14 +47,17 @@ export class AppComponent implements OnInit{
   saveContent(): void {
     // this.servico.save(this.registro).subscribe({complete: () => {console.log (this.registro)}});
     // Aqui você pode fazer algo com o conteúdo do editor
+    // console.log(this.escapeHtml(this.data.content));
     console.log('Conteúdo salvo:', this.data.content);
   }
 
   get(): void {
     this.servico.get().subscribe({
-      next: (resposta: content[]) => {
+      next: (resposta: data[]) => {
         this.registro = resposta;
-        console.log (this.registro);
+        if (this.registro.length > 0) {
+          this.data = this.registro[0]; // Supondo que você queira carregar o primeiro item
+        }
       }
     })
   }

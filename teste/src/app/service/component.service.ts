@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { content } from '../model/content';
+import { data } from '../model/data';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { IService } from './i-service';
@@ -13,17 +13,17 @@ export class ComponentService{
   constructor(private http: HttpClient) {}
   apiUrl: string = environment.API_URL;
 
-  get(termoBusca?: string | undefined): Observable<content[]> {
+  get(termoBusca?: string | undefined): Observable<data[]> {
     let url = this.apiUrl;
-    return this.http.get<content[]>(url);
+    return this.http.get<data[]>(url);
   }
 
-  save(objeto: content): Observable<content[]> {
+  save(objeto: data): Observable<data[]> {
     let url = this.apiUrl;
-    if (objeto.content) {
-      return this.http.put<content[]>(url, objeto);
+    if (objeto.id) {
+      return this.http.put<data[]>(url, objeto);
     } else {
-      return this.http.post<content[]>(url, objeto);
+      return this.http.post<data[]>(url, objeto);
     }
   }
 
