@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
     this.get();
   }
 
-  registro: data[] = [];
+  registro: data[] = []; /*Mudar para objeto porque sempre é uma publicação*/
 
   title = 'teste';
   @ViewChild('editor') editor: any;
@@ -45,18 +45,19 @@ export class AppComponent implements OnInit{
   }
 
   saveContent(): void {
-    // this.servico.save(this.registro).subscribe({complete: () => {console.log (this.registro)}});
+    this.servico.save(this.data).subscribe({complete: () => {console.log (this.data)}});
     // Aqui você pode fazer algo com o conteúdo do editor
     // console.log(this.escapeHtml(this.data.content));
     console.log('Conteúdo salvo:', this.data.content);
   }
 
-  get(): void {
+  get(): void { /*Mudar para getById porque sempre será somente um, há não ser com usuário editor ou msm autor*/
     this.servico.get().subscribe({
       next: (resposta: data[]) => {
         this.registro = resposta;
         if (this.registro.length > 0) {
-          this.data = this.registro[0]; // Supondo que você queira carregar o primeiro item
+          console.log(this.registro[0]);
+          this.data = this.registro[0]; // Supondo carregar o primeiro item
         }
       }
     })
