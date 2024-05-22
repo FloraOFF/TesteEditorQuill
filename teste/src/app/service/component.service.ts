@@ -8,7 +8,7 @@ import { IService } from './i-service';
 @Injectable({
   providedIn: 'root'
 })
-export class ComponentService{
+export class ComponentService {
 
   constructor(private http: HttpClient) {}
   apiUrl: string = environment.API_URL;
@@ -19,12 +19,18 @@ export class ComponentService{
   }
 
   save(objeto: data): Observable<data[]> {
-    let url = this.apiUrl;
+    let url = `${this.apiUrl}`;
     if (objeto.id) {
+      url = `${this.apiUrl}/${objeto.id}`;
       return this.http.put<data[]>(url, objeto);
     } else {
       return this.http.post<data[]>(url, objeto);
     }
+  }
+
+  delete(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`; // URL com o ID para DELETE
+    return this.http.delete<void>(url);
   }
 
 }
