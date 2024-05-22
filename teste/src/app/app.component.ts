@@ -56,7 +56,7 @@ export class AppComponent implements OnInit{
         this.registro = resposta;
         if (this.registro.length > 0) {
           console.log(this.registro[0]);
-          this.data = this.registro[0]; // Supondo carregar o primeiro item
+          this.data = this.registro[0]; // Supondo carregar o primeiro item (Poderia fazer com o getById? Sim, mas para um teste simples fiz assim)
         }
       }
     })
