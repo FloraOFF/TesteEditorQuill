@@ -35,8 +35,7 @@ export class AppComponent implements OnInit{
     id: 0,
     content: ''   //Tentar ver melhor a questão de um objeto somente
   };
-
-  name = 'Angular';
+  
   editorText = '';
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
