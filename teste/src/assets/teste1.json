@@ -1,20 +1,16 @@
 {
   "data": [
     {
-      "id": "0",
+      "id": 0,
       "content": "<p><strong><s>Editando....</s></strong>"
     },
     {
-      "id": "1",
+      "id": 1,
       "content": "<p>AFadgs</p>"
     },
     {
-      "id": "2",
+      "id": 2,
       "content": "<p><strong><s>sklslsjkbjkfb</s></strong>"
-    },
-    {
-      "id": 0,
-      "content": "<p><strong>Testando....</strong></p>"
     }
   ]
 }
