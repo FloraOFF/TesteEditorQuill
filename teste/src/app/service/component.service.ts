@@ -24,9 +24,9 @@ export class ComponentService implements IService<data>{
   }
 
   save(objeto: data): Observable<data> {
-    let url = `${this.apiUrl}`;
+    let url = this.apiUrl;
     if (objeto.id) {
-      url = `${this.apiUrl}/${objeto.id}`;
+      // url += `/${objeto.id}`;
       return this.http.put<data>(url, objeto);
     } else {
       return this.http.post<data>(url, objeto);

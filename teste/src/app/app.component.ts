@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
   }
 
   saveContent(): void {
-    this.servico.save(this.data).subscribe({complete: () => {console.log (this.data)}});
+    this.servico.save(this.data).subscribe({complete: () => {console.log (this.data)}});  
     // Aqui você pode fazer algo com o conteúdo do editor
     // console.log(this.escapeHtml(this.data.content));
     console.log('Conteúdo salvo:', this.data.content);
