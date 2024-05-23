@@ -4,6 +4,13 @@
 
 <div class="container">
   <div class="row">
+    <ul>
+      <li *ngFor="let item of lista">
+        <a href="#" (click)="getById(item.id)">{{item.id}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
     <div class="col-nd-12">
       <quill-editor [styles]="{height: '200px'}" [modules]="modules" 
       (onEditorChanged)="changedEditor($event)" #content="ngModel" 

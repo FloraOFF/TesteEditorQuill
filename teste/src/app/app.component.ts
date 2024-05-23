@@ -13,11 +13,11 @@ export class AppComponent implements OnInit{
   constructor (private servico: ComponentService) {}
   
   ngOnInit(): void {
-    // console.log (this.get());
-    // this.get();
+    this.get();    
   }
 
-  registro: data[] = []; /*Mudar para objeto porque sempre é uma publicação*/
+  lista: data[] = Array<data>();
+  data: data = <data>{};
 
   title = 'teste';
   @ViewChild('editor') editor: any;
@@ -30,11 +30,6 @@ export class AppComponent implements OnInit{
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
-
-  data = {
-    id: 0,
-    content: ''   //Tentar ver melhor a questão de um objeto somente
-  };
   
   editorText = '';
 
@@ -50,14 +45,18 @@ export class AppComponent implements OnInit{
     console.log('Conteúdo salvo:', this.data.content);
   }
 
-  get(): void { /*Mudar para getById porque sempre será somente um, há não ser com usuário editor ou msm autor*/
+  getById(id: number): void {
+    this.servico.getById(id).subscribe({
+      next: (resposta: data) => {
+        this.data = resposta;
+      }
+    })
+  }
+
+  get(): void {
     this.servico.get().subscribe({
       next: (resposta: data[]) => {
-        this.registro = resposta;
-        if (this.registro.length > 0) {
-          console.log(this.registro[0]);
-          this.data = this.registro[0]; // Supondo carregar o primeiro item (Poderia fazer com o getById? Sim, mas para um teste simples fiz assim)
-        }
+        this.lista = resposta;
       }
     })
   }
