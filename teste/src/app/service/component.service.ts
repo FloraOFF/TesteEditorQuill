@@ -15,7 +15,8 @@ export class ComponentService implements IService<data>{
   apiUrl: string = environment.API_URL;
   
   getById(id: number): Observable<data> {
-    throw new Error('Method not implemented.');
+    let url = `${this.apiUrl}/${id}`;
+    return this.http.get<data>(url);
   }
 
   get(termoBusca?: string | undefined): Observable<data[]> {
@@ -26,7 +27,7 @@ export class ComponentService implements IService<data>{
   save(objeto: data): Observable<data> {
     let url = this.apiUrl;
     if (objeto.id) {
-      // url += `/${objeto.id}`;
+      url += `/${objeto.id}`;
       return this.http.put<data>(url, objeto);
     } else {
       return this.http.post<data>(url, objeto);
